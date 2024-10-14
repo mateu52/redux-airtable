@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { editUser, fetchUsers } from "../features/reducer/users/usersThunk";
 import { AppDispatch, RootState } from "../app/store";
 import { useEffect, useState } from "react";
+import { FormWindow } from './FormWindow'
 import NewWindow from "react-new-window";
 
 export const UserHome = () => {
@@ -11,6 +12,8 @@ export const UserHome = () => {
     const dispatch = useDispatch<AppDispatch>();
     const [isWindowOpen, setIsWindowOpen] = useState(false);
 
+    const [id, setId] = useState('') 
+    console.log(users)
     //dodanie danych do users;
     //edycja i susuwanie danych z users
     useEffect(() => {
@@ -21,7 +24,8 @@ export const UserHome = () => {
     console.log(users)
     const handleEdit = (id: string, name: string) => {
         //dispatch(edit)
-        //setIsWindowOpen(true);
+        setId(id)
+        setIsWindowOpen(true);
         dispatch(editUser({ id, Name: name }))
     }
     return (
@@ -40,7 +44,7 @@ export const UserHome = () => {
             })}
             {isWindowOpen && (
                 <NewWindow>
-                    <h1>Hi 👋</h1>
+                    <FormWindow id={id} />
                 </NewWindow>
             )}
         </div>
