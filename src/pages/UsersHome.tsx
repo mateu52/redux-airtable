@@ -22,11 +22,10 @@ export const UserHome = () => {
           }
     },[status, dispatch])
     console.log(users)
-    const handleEdit = (id: string, name: string) => {
+    const handleEdit = (id: string) => {
         //dispatch(edit)
         setId(id)
         setIsWindowOpen(true);
-        dispatch(editUser({ id, Name: name }))
     }
     return (
         <div>
@@ -36,7 +35,7 @@ export const UserHome = () => {
                     <div key={user.id} className="flex ml-2 mt-2 pl-1 bg-gray-300 w-1/3">
                         <p className="pr-4">{user.fields.Name} </p>
                         <button 
-                            onClick={() => handleEdit(user.id, "Nowe Imię")}
+                            onClick={() => handleEdit(user.id)}
                             className="text-red-600"
                         >edytuj</button>
                     </div>
@@ -44,7 +43,7 @@ export const UserHome = () => {
             })}
             {isWindowOpen && (
                 <NewWindow>
-                    <FormWindow id={id} />
+                    <FormWindow id={id} setWindow={setIsWindowOpen} />
                 </NewWindow>
             )}
         </div>
