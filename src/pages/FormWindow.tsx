@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../app/store"
-import { editUser, User } from "../features/reducer/users/usersThunk"
+import { editUser } from "../features/reducer/users/usersThunk"
 import { Dispatch, SetStateAction, useState } from "react"
 
 type WindowProps = {

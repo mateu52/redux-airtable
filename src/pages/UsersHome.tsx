@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { editUser, fetchUsers } from "../features/reducer/users/usersThunk";
+import { fetchUsers } from "../features/reducer/users/usersThunk";
 import { AppDispatch, RootState } from "../app/store";
 import { useEffect, useState } from "react";
 import { FormWindow } from './FormWindow'
